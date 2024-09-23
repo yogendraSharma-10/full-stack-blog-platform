@@ -1,0 +1,348 @@
+/* Global Styles for the Full-Stack Blog Platform */
+
+/* --- CSS Variables --- */
+:root {
+  /* Colors */
+  --primary-color: #3498db; /* Blue */
+  --secondary-color: #2ecc71; /* Green */
+  --accent-color: #e74c3c; /* Red */
+  --text-color: #333; /* Dark Gray */
+  --light-text-color: #555; /* Medium Gray */
+  --background-color: #f4f7f6; /* Light Gray */
+  --card-background: #ffffff; /* White */
+  --border-color: #e0e0e0; /* Lighter Gray */
+  --hover-color: #2980b9; /* Darker Blue */
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --warning-color: #ffc107;
+
+  /* Typography */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-secondary: 'Roboto Slab', serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Box Shadow */
+  --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --box-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --box-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Base Styles & Resets --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the main app content takes available space */
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-secondary);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; } /* ~40px */
+h2 { font-size: 2rem; }   /* ~32px */
+h3 { font-size: 1.75rem; } /* ~28px */
+h4 { font-size: 1.5rem; }  /* ~24px */
+h5 { font-size: 1.25rem; } /* ~20px */
+h6 { font-size: 1rem; }    /* ~16px */
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--hover-color);
+  text-decoration: underline;
+}
+
+/* --- Buttons --- */
+button {
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--card-background);
+}
+
+.btn-primary:hover {
+  background-color: var(--hover-color);
+  box-shadow: var(--box-shadow-sm);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--card-background);
+}
+
+.btn-secondary:hover {
+  background-color: darken(var(--secondary-color), 10%); /* Placeholder for actual darken logic */
+  box-shadow: var(--box-shadow-sm);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: var(--card-background);
+  box-shadow: var(--box-shadow-sm);
+}
+
+.btn-danger {
+  background-color: var(--accent-color);
+  color: var(--card-background);
+}
+
+.btn-danger:hover {
+  background-color: darken(var(--accent-color), 10%); /* Placeholder for actual darken logic */
+  box-shadow: var(--box-shadow-sm);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  padding: 0;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: var(--hover-color);
+  text-decoration: none;
+}
+
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.125rem;
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Forms --- */
+form {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  color: var(--light-text-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--card-background);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* primary-color with transparency */
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+}
+
+/* --- Layout & Utilities --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: var(--spacing-xl) 0;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.alert {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1); /* success-color with transparency */
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+.alert-error {
+  background-color: rgba(220, 53, 69, 0.1); /* error-color with transparency */
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.1); /* warning-color with transparency */
+  color: var(--warning-color);
+  border: 1px solid var(--warning-color);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  .main-content {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  .btn {
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+/* Helper for darkening colors (not native CSS, would need preprocessor or JS) */
+/* For production, consider using a CSS preprocessor like SASS/LESS or a utility library */
+/* For now, manually adjust or use rgba for transparency */
+/* Example: background-color: color-mix(in srgb, var(--secondary-color) 90%, black); */
+/* Or simply define a darker version in variables if needed often */
+/* .btn-secondary:hover { background-color: #27ae60; } */
+/* .btn-danger:hover { background-color: #c0392b; } */
